@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
+using System.Collections;
 
 [RequireComponent(typeof(HealthModule))]
 [RequireComponent(typeof(MobController))]
@@ -7,6 +9,7 @@ public class Mob : MonoBehaviour
     public MobData mobData;
     private Rigidbody rb;
     private HealthModule healthModule;
+    private NavMeshAgent navMeshAgent;
 
     public bool canSplit;
     public int splitCount;
@@ -15,11 +18,7 @@ public class Mob : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         healthModule = GetComponent<HealthModule>();
-    }
-
-    void Start()
-    {
-        splitCount = 0;
+        navMeshAgent = GetComponent<MobController>().navMeshAgent;
     }
 
     void OnEnable()
@@ -35,12 +34,24 @@ public class Mob : MonoBehaviour
     void Split()
     {
         splitCount += 1;
-
-        if (splitCount <= 2)
+        if (splitCount < 3)
         {
-            gameObject.transform.localScale *= 0.5f;
-            rb.AddForceAtPosition(Vector3.up * 1000f, transform.position, ForceMode.Impulse);
-            GetComponent<MobController>().navMeshAgent.velocity = rb.velocity;
+            gameObject.transform.localScale *= 0.75f;
+            if (GetComponent<MobController>().navMeshAgent.isOnNavMesh)
+            {
+                navMeshAgent.isStopped = true;
+                navMeshAgent.enabled = false;
+            }
+
+            rb.AddForce(Vector3.up * 25f, ForceMode.Impulse);
+            GameObject clone = Instantiate(gameObject, transform.position, Quaternion.identity);
+            clone.GetComponent<Mob>().canSplit = true;
+            clone.GetComponent<Mob>().splitCount += splitCount + 1;
+            clone.GetComponent<Rigidbody>().AddForce(-clone.transform.forward * 10f, ForceMode.Impulse);
+            clone.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            navMeshAgent.enabled = true;
+            navMeshAgent.isStopped = false;
+            navMeshAgent.SetDestination(GameObject.FindObjectOfType<Player>().transform.position);
         }
         else
         {
@@ -57,6 +68,16 @@ public class Mob : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            navMeshAgent.enabled = true;
+            navMeshAgent.isStopped = false;
+            navMeshAgent.SetDestination(GameObject.FindObjectOfType<Player>().transform.position);
         }
     }
 }

@@ -19,21 +19,27 @@ public class MobController : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        navMeshAgent.speed = mobData.moveSpeed;
-        navMeshAgent.SetDestination(target.position);
+        if (navMeshAgent.isOnNavMesh)
+        {
+            navMeshAgent.speed = mobData.moveSpeed;
+            navMeshAgent.SetDestination(target.position);
+        }
     }
 
     void Update()
     {
-        Follow(target);
-        if (GetDistanceToTarget() <= mobData.attackRange)
+        if (navMeshAgent.enabled)
         {
-            Attack();
-            animator.SetBool("attack", true);
-        }
-        else
-        {
-            animator.SetBool("attack", false);
+            Follow(target);
+            if (GetDistanceToTarget() <= mobData.attackRange)
+            {
+                Attack();
+                animator.SetBool("attack", true);
+            }
+            else
+            {
+                animator.SetBool("attack", false);
+            }
         }
     }
 
