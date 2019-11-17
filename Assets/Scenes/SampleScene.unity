@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 2139048959383195410, guid: 9e9bcc3dcc44b9740b803fd5d984d1ec,
         type: 3}
       propertyPath: m_Name
-      value: VRTK Setup
+      value: VRTK PlayerController
       objectReference: {fileID: 0}
     - target: {fileID: 2139048959383195411, guid: 9e9bcc3dcc44b9740b803fd5d984d1ec,
         type: 3}
