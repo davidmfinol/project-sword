@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mobs:
   - name: Alien Robot
-    prefab: {fileID: 5118137910413794747, guid: 627d488c1fd7cad44b9e01b3e48a7202,
+    prefab: {fileID: 7822954724130068508, guid: 55e5a7490402d83488cd490a4e390d88,
       type: 3}
     spawnChance: 0.25
     waveStart: 1
