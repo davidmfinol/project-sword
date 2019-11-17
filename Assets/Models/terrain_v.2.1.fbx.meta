@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d0b44332e4c4d304db6bbaaf43cfc21e
+guid: c3b295967da760a4d9975139cbb01260
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
@@ -39,10 +39,10 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -68,7 +68,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 3
