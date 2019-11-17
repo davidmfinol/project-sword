@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class MobController : MonoBehaviour
 {
     private MobData mobData;
+    private Animator animator;
     private NavMeshAgent navMeshAgent;
 
     private Transform target;
@@ -11,6 +12,7 @@ public class MobController : MonoBehaviour
     void Awake()
     {
         mobData = GetComponent<Mob>().mobData;
+        animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -23,13 +25,15 @@ public class MobController : MonoBehaviour
 
     void Update()
     {
-        if (GetDistanceToTarget() > mobData.attackRange)
+        Follow(target);
+        if (GetDistanceToTarget() <= mobData.attackRange)
         {
-            Follow(target);
+            Attack();
+            animator.SetBool("attack", true);
         }
         else
         {
-            Attack();
+            animator.SetBool("attack", false);
         }
     }
 
@@ -38,9 +42,11 @@ public class MobController : MonoBehaviour
     void Follow(Transform target)
     {
         navMeshAgent.SetDestination(target.position);
+        animator.SetFloat("speed", navMeshAgent.velocity.magnitude);
     }
 
     void Attack()
     {
+        animator.SetBool("attack", true);
     }
 }
