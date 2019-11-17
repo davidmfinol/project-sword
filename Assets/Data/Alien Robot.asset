@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf0ae6f4317b9d048be98d7f35748bb2, type: 3}
-  m_Name: Alien
+  m_Name: Alien Robot
   m_EditorClassIdentifier: 
   mobName: Alien
   moveSpeed: 5
+  attackRange: 2

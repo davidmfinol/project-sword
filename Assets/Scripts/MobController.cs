@@ -6,6 +6,8 @@ public class MobController : MonoBehaviour
     private MobData mobData;
     private NavMeshAgent navMeshAgent;
 
+    private Transform target;
+
     void Awake()
     {
         mobData = GetComponent<Mob>().mobData;
@@ -14,10 +16,31 @@ public class MobController : MonoBehaviour
 
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent.speed = mobData.moveSpeed;
+        navMeshAgent.SetDestination(target.position);
     }
 
-    void Follow(Transform target) { }
+    void Update()
+    {
+        if (GetDistanceToTarget() > mobData.attackRange)
+        {
+            Follow(target);
+        }
+        else
+        {
+            Attack();
+        }
+    }
 
-    void Attack() { }
+    float GetDistanceToTarget() => navMeshAgent.remainingDistance;
+
+    void Follow(Transform target)
+    {
+        navMeshAgent.SetDestination(target.position);
+    }
+
+    void Attack()
+    {
+    }
 }
