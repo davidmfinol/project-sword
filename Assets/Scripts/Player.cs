@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(HealthModule))]
+[RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
 {
     private HealthModule healthModule;
