@@ -163,7 +163,8 @@ public class MobSpawnModule : MonoBehaviour
                 if (mobSpawnPoints.Length > 0)
                 {
                     int index = Random.Range(0, mobSpawnQueue.Count);
-                    Instantiate(mobSpawnQueue[index], GetRandomSpawnPoint(), false);
+                    GameObject mob = Instantiate(mobSpawnQueue[index], GetRandomSpawnPoint(), false);
+                    mob.transform.SetParent(null);
                     mobSpawnQueue.Remove(mobSpawnQueue[index]);
                 }
             }

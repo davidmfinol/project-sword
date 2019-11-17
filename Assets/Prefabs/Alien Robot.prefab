@@ -3831,6 +3831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobData: {fileID: 11400000, guid: 7bd20ed00e7eead488a04bd50fc21dd2, type: 2}
+  canSplit: 1
+  splitCount: 0
 --- !u!195 &3054235951374791659
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3845,7 +3847,7 @@ NavMeshAgent:
   m_Acceleration: 60
   avoidancePriority: 50
   m_AngularSpeed: 360
-  m_StoppingDistance: 3
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

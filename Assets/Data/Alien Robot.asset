@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mobName: Alien
   moveSpeed: 5
-  attackRange: 3
+  attackRange: 2

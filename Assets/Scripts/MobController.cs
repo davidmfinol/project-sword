@@ -5,7 +5,7 @@ public class MobController : MonoBehaviour
 {
     private MobData mobData;
     private Animator animator;
-    private NavMeshAgent navMeshAgent;
+    [HideInInspector] public NavMeshAgent navMeshAgent;
 
     private Transform target;
 
