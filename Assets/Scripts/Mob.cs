@@ -17,8 +17,14 @@ public class Mob : MonoBehaviour
         healthModule.onDeath += Die;
     }
 
+    void OnDisable()
+    {
+        healthModule.onDeath -= Die;
+    }
+
     void Die()
     {
         Debug.Log(gameObject.name + " died!");
+        Destroy(gameObject);
     }
 }
