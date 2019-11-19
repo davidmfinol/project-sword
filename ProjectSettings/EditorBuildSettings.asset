@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TonyPrototypes.unity
-    guid: 22f19bd96796d1947a026b9b71a609a0
+    path: Assets/Scenes/PlayScene.unity
+    guid: 341e1b123d33fb9458b3fd62dd87b494
   m_configObjects: {}
